@@ -19,5 +19,8 @@ def route_department(state: CustomerSupportState):
 
     elif intent == "Account":
         return "account_agent"
+    
+    elif intent == "Memory":
+        return "memory_agent"
 
     return "sales_agent"
