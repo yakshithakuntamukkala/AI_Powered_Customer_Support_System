@@ -2,7 +2,7 @@ from graph.workflow import graph
 
 state = {
     "customer_name": "David",
-    "query": "What are your pricing plans?",
+    "query": "I need a refund.",
     "intent": "",
     "department": "",
     "retrieved_docs": [],
