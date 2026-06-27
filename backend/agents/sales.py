@@ -1,4 +1,5 @@
 from graph.state import CustomerSupportState
+from rag.retriever import retrieve_context
 
 
 def sales_agent(state: CustomerSupportState):
@@ -7,24 +8,12 @@ def sales_agent(state: CustomerSupportState):
 
     state["department"] = "Sales"
 
-    query = state["query"].lower()
+    docs = retrieve_context(state["query"])
 
-    if "price" in query or "pricing" in query:
-        response = (
-            "We offer Basic, Professional, and Enterprise plans. "
-            "You can choose the plan that best fits your business needs."
-        )
+    context = "\n\n".join(doc.page_content for doc in docs)
 
-    elif "subscription" in query:
-        response = (
-            "We provide monthly and annual subscription plans."
-        )
+    state["retrieved_docs"] = [doc.page_content for doc in docs]
 
-    else:
-        response = (
-            "Our Sales Team will help you with product and pricing information."
-        )
-
-    state["draft_response"] = response
+    state["draft_response"] = context
 
     return state

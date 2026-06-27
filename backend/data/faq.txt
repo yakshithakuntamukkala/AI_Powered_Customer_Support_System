@@ -1,0 +1,16 @@
+Frequently Asked Questions
+
+Q: How can I reset my password?
+A: Click "Forgot Password" on the login page.
+
+Q: Where can I download invoices?
+A: Invoices are available under the Billing section of your account.
+
+Q: How do I contact customer support?
+A: Email support@abctecnologies.com
+
+Q: Can I upgrade my subscription?
+A: Yes. Subscription upgrades are available from your dashboard.
+
+Q: How long does it take to receive a refund?
+A: Refund requests are reviewed within 3–5 business days after supervisor approval.
