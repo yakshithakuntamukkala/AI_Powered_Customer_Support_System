@@ -2,7 +2,7 @@ from graph.workflow import graph
 
 state = {
     "customer_name": "David",
-    "query": "I need a refund for my annual subscription.",
+    "query": "What was my previous support issue?",
     "intent": "",
     "department": "",
     "retrieved_docs": [],
@@ -10,7 +10,7 @@ state = {
     "requires_approval": False,
     "approved": False,
     "final_response": "",
-    "conversation_history": []
+    "conversation_history": [],
 }
 
 result = graph.invoke(state)
