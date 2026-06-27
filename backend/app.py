@@ -2,7 +2,7 @@ from graph.workflow import graph
 
 state = {
     "customer_name": "David",
-    "query": "I need a refund.",
+    "query": "I forgot my account password.",
     "intent": "",
     "department": "",
     "retrieved_docs": [],
@@ -15,4 +15,7 @@ state = {
 
 result = graph.invoke(state)
 
-print(result)
+print("\n========== FINAL STATE ==========")
+
+for key, value in result.items():
+    print(f"{key}: {value}")
