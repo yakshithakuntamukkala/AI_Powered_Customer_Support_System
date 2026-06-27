@@ -1,29 +1,19 @@
 from graph.state import CustomerSupportState
+from rag.generator import answer_with_rag
 
 
 def account_agent(state: CustomerSupportState):
 
     print("👤 Account Agent is handling the request...")
 
+    result = answer_with_rag(state["query"])
+
     state["department"] = "Account"
 
-    query = state["query"].lower()
+    state["retrieved_docs"] = [
+        doc.page_content for doc in result["documents"]
+    ]
 
-    if "password" in query:
-        response = (
-            "Click 'Forgot Password' on the login page to reset your password."
-        )
-
-    elif "profile" in query:
-        response = (
-            "You can update your profile information from Account Settings."
-        )
-
-    else:
-        response = (
-            "Our Account Team will assist you."
-        )
-
-    state["draft_response"] = response
+    state["draft_response"] = result["answer"]
 
     return state

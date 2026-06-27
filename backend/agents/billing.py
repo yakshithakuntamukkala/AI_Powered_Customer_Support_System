@@ -1,29 +1,19 @@
 from graph.state import CustomerSupportState
+from rag.generator import answer_with_rag
 
 
 def billing_agent(state: CustomerSupportState):
 
     print("💳 Billing Agent is handling the request...")
 
+    result = answer_with_rag(state["query"])
+
     state["department"] = "Billing"
 
-    query = state["query"].lower()
+    state["retrieved_docs"] = [
+        doc.page_content for doc in result["documents"]
+    ]
 
-    if "refund" in query:
-        response = (
-            "Your refund request has been received and will be reviewed."
-        )
-
-    elif "invoice" in query:
-        response = (
-            "Invoices are available in the Billing section of your account."
-        )
-
-    else:
-        response = (
-            "Our Billing Team will assist you."
-        )
-
-    state["draft_response"] = response
+    state["draft_response"] = result["answer"]
 
     return state
