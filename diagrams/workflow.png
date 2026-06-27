@@ -1,0 +1,35 @@
+                 START
+                    │
+                    ▼
+         Receive Customer Query
+                    │
+                    ▼
+         Retrieve Memory (SQLite)
+                    │
+                    ▼
+         Intent Classification
+                    │
+                    ▼
+       Human Approval Required?
+             │             │
+            No            Yes
+             │             ▼
+             │      Human Approval
+             │             │
+             └──────┬──────┘
+                    ▼
+         Route to Department
+        ┌────┬────┬────┬────┐
+        ▼    ▼    ▼    ▼
+     Sales Tech Billing Account
+        │    │      │      │
+        └────┴──────┴──────┘
+                    │
+                    ▼
+            Supervisor Agent
+                    │
+                    ▼
+          Save Conversation(SQLite)
+                    │
+                    ▼
+                   END
